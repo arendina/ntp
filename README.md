@@ -1,2 +1,2 @@
-# ntp
+# NTP
 Chrony example configuration

@@ -9,10 +9,15 @@ Vagrant.configure("2") do |config|
   config.vm.box = "bento/rockylinux-9"
 
   config.vm.define :ntpserver do |ntpserver|
-    # uncomment the line below to set up the ambari dev environment
     ntpserver.vm.provision "shell", path: "ntpserver-bootstrap.sh"
     ntpserver.vm.hostname = "ntpserver.localnet"
     ntpserver.vm.network "private_network", ip: "192.168.56.10"
+  end
+
+  config.vm.define :ntpclient do |ntpclient|
+    ntpclient.vm.provision "shell", path: "ntpclient-bootstrap.sh"
+    ntpclient.vm.hostname = "ntpclient.localnet"
+    ntpclient.vm.network "private_network", ip: "192.168.56.11"
   end
 
 
